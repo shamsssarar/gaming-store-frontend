@@ -28,7 +28,7 @@ export default function ScrollToTop() {
       // Update message based on thresholds
       if (scrollPercent >= 95) {
         setMessage("Energy Full! Scroll up?");
-      } else if (scrollPercent >= 80) {
+      } else if (scrollPercent >= 70) {
         setMessage("You're almost there...");
       } else {
         setMessage("");
