@@ -82,40 +82,164 @@ src/
 
 ### Prerequisites
 
-- Node.js v16+
-- npm or yarn
+Before you begin, ensure your system has the following installed:
 
-### Install
+- **Node.js** v16+ ([Download](https://nodejs.org/))
+- **npm** (v7+) or **yarn** (v1.22+)
+  - npm comes bundled with Node.js
+  - To verify: `node --version` and `npm --version`
+- **Git** ([Download](https://git-scm.com/))
+  - To verify: `git --version`
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/shamsssarar/gaming-store-frontend.git
+cd gaming-store-frontend
+```
+
+### Step 2: Install Dependencies
+
+Using npm:
 
 ```bash
 npm install
 ```
 
-### Run development server
+Or using yarn:
+
+```bash
+yarn install
+```
+
+This installs all required packages listed in `package.json`:
+
+- React & React DOM
+- React Router DOM
+- Tailwind CSS
+- Framer Motion
+- Vite
+- TypeScript
+- ESLint and related tools
+
+### Step 3: Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-### Build for production
+Or with yarn:
+
+```bash
+yarn dev
+```
+
+The development server will start, typically at:
+
+```
+http://localhost:5173
+```
+
+Open this URL in your browser. The app will hot-reload when you make changes to the code.
+
+### Step 4: Build for Production
+
+When you're ready to deploy:
 
 ```bash
 npm run build
 ```
 
-### Preview production build
+Or with yarn:
+
+```bash
+yarn build
+```
+
+This creates an optimized build in the `dist/` directory, ready for deployment.
+
+### Step 5: Preview the Production Build
+
+To test the production build locally:
 
 ```bash
 npm run preview
 ```
 
+Or with yarn:
+
+```bash
+yarn preview
+```
+
+### Step 6: Linting
+
+To check code quality with ESLint:
+
+```bash
+npm run lint
+```
+
+Or with yarn:
+
+```bash
+yarn lint
+```
+
+### Troubleshooting
+
+**Port 5173 already in use?**
+
+```bash
+npm run dev -- --port 3000
+```
+
+**Dependencies installation fails?**
+
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete node_modules and package-lock.json
+rm -r node_modules package-lock.json
+
+# Reinstall
+npm install
+```
+
+**Hot reload not working?**
+
+- Restart the dev server: `npm run dev`
+- Check your firewall settings
+- Ensure you're not running the app from a network drive
+
 ## 🛠️ Deployment
 
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Client-side routing support via `public/_redirects`
+The project is deployed on **Netlify** with automatic builds from the GitHub repository.
 
-> Ensure your hosting environment is configured to redirect all traffic to `index.html` when using React Router.
+### Deployment Configuration
+
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Live URL:** https://sdstore.netlify.app
+- **Repository:** https://github.com/shamsssarar/gaming-store-frontend
+
+### Client-Side Routing
+
+The app uses client-side routing via React Router. The `public/_redirects` file is configured to handle all routes correctly in production:
+
+```
+/* /index.html 200
+```
+
+This ensures all requests are redirected to `index.html`, allowing React Router to manage navigation.
+
+### Deploy Your Own Fork
+
+1. Fork the repository on GitHub
+2. Connect your fork to Netlify
+3. Netlify will automatically build and deploy on every push
+4. Configure your custom domain in Netlify settings
 
 ## 📌 Recommended Workflow
 
@@ -125,6 +249,36 @@ npm run preview
 4. Add shared UI patterns to `src/components/ui`
 5. Keep cart logic centralized in `src/context/CartContext.tsx`
 6. Persist product/category data in `src/data.ts`
+
+## 📚 Project Structure Breakdown
+
+### Pages (`src/pages/`)
+
+- **Home.tsx** — Landing page with featured products, hero banner, and promotions
+- **Shop.tsx** — Product browsing with category filtering
+- **ProductDetails.tsx** — Individual product page with specifications
+- **Cart.tsx** — Shopping cart management
+- **Checkout.tsx** — Multi-step checkout flow
+- **About.tsx** — Company information and story
+
+### Components
+
+**Layout Components** (`src/components/layout/`)
+
+- Home sections: HeroBanner, FeaturedProducts, BestSellers, SpecialOffers, etc.
+- About sections: AboutHero, CoreValues, OriginStory, FinalCTA
+- Navigation: Navbar, Footer
+
+**UI Components** (`src/components/ui/`)
+
+- ProductCard.tsx — Reusable product display card
+- Other shared atomic components
+
+### State Management
+
+- **CartContext.tsx** — Centralized cart logic and state
+- localStorage integration for persistence
+- Derived state calculations (totals, item counts)
 
 ## 🧠 Design Principles
 
