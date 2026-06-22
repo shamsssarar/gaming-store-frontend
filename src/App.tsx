@@ -13,6 +13,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Preloader from "./components/ui/Preloader";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 function AppContent() {
   const location = useLocation();
@@ -23,7 +24,7 @@ function AppContent() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Preloader />
       <Navbar />
-
+      <ScrollToTop />
       <main className={`flex-grow ${!isHome ? "pt-24" : ""}`}>
         <Routes>
           <Route path="/" element={<Home />} />
