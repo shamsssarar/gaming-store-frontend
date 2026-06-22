@@ -50,8 +50,11 @@ export default function Navbar() {
             <Link to="/shop" className="hover:text-amber-400 transition-colors">
               Shop Gear
             </Link>
-            <Link to="/about" className="hover:text-amber-400 transition-colors">
-              About
+            <Link
+              to="/about"
+              className="hover:text-amber-400 transition-colors"
+            >
+              Our Story
             </Link>
           </div>
 
