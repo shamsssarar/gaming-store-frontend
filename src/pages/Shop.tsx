@@ -43,7 +43,7 @@ export default function Shop() {
       {/* Filtered Product Grid */}
       <motion.div
         layout // Framer motion magic to smoothly animate layout changes when filtering
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />

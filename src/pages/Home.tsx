@@ -18,8 +18,8 @@ export default function Home() {
       <SpecialOffers />
       <BestSellers />
       <CustomerReviews />
-      <Newsletter />
       <WhyChooseUs />
+      <Newsletter />
     </div>
   );
 }

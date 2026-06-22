@@ -11,6 +11,7 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import ProductDetails from "./pages/ProductDetails";
 import Checkout from "./pages/Checkout";
+import About from "./pages/About";
 
 function AppContent() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function AppContent() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<About />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
