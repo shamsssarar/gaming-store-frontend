@@ -1,15 +1,27 @@
-import { products } from "../hooks/data";
+import { products } from "../data";
+import HeroBanner from "../components/layout/Home/HeroBanner";
+import FeaturedCategories from "../components/layout/Home/FeaturedCategories";
+
+import WhyChooseUs from "../components/layout/Home/WhyChooseUs";
 import ProductCard from "../components/ui/ProductCard";
+import SpecialOffers from "../components/layout/Home/SpecialOffers";
+import CustomerReviews from "../components/layout/Home/CustomerReviews";
+import BestSellers from "../components/layout/Home/BestSellers";
+import Newsletter from "../components/layout/Home/Newsletter";
+import FeaturedProducts from "../components/layout/Home/FeaturedProducts";
 
 export default function Home() {
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">SD Tech Store</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+    <div className="flex flex-col w-full bg-slate-50">
+      <HeroBanner />
+      <FeaturedCategories />
+      <FeaturedProducts />
+      <SpecialOffers />
+      <BestSellers />
+      <CustomerReviews />
+      <Newsletter />
+      <WhyChooseUs />
     </div>
   );
 }

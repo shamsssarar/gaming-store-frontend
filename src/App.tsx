@@ -1,12 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
-import Navbar from "./components/layout/Home/Navbar";
-import Footer from "./components/layout/Home/Footer";
-
-const Cart = () => (
-  <div className="p-12 text-2xl font-bold">Cart Page Coming Soon!</div>
-);
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Cart from "./pages/Cart";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
@@ -18,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/shop" element={<Shop />} />
           </Routes>
         </main>
         <Footer />

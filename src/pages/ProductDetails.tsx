@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { products } from "../hooks/data";
+import { products } from "../data";
 import { useCart } from "../context/CartContext";
 import { motion } from "framer-motion";
 
