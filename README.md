@@ -1,73 +1,139 @@
-# React + TypeScript + Vite
+# SD Store — Next-Gen E-Commerce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-performance storefront for next-level gaming hardware. Built with a component-driven React architecture, global cart state management, and a polished Tailwind + Framer Motion experience.
 
-Currently, two official plugins are available:
+## 🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+`gaming-store` is a modern React-based storefront designed for elite gaming peripherals and hardware. It emphasizes maintainability, performance, and a premium UX through:
 
-## React Compiler
+- Modular page orchestration with reusable layout components
+- Global cart state powered by `CartContext`
+- Dynamic client-side routing using React Router
+- Tailwind-first styling with glassmorphic UI patterns
+- Framer Motion micro-interactions for smooth, engaging transitions
+- A normalized, type-safe data layer in `src/data.ts`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌟 Core Architecture
 
-## Expanding the ESLint configuration
+### Modular Orchestration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pages act as orchestrators that compose layout-specific sections from `src/components/layout`. This clean separation keeps business logic, presentation, and page composition decoupled.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Global State Management
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+`src/context/CartContext.tsx` handles:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- cart item state
+- add/remove/update cart operations
+- derived totals and item counts
+- localStorage persistence
+
+### Intelligent Routing
+
+The app uses `react-router-dom` to manage navigation and route-aware UI state. The Navbar is responsive to location changes and adjusts its styling dynamically for a premium visual experience.
+
+### Optimized Data Layer
+
+`src/data.ts` contains structured, dictionary-style product and category data. This avoids redundancy, supports type-safe filtering, and simplifies category-driven rendering in the Shop flow.
+
+### Premium UX/UI
+
+The storefront uses Tailwind CSS for utility-first styling, a high-contrast amber/slate palette, and motion-enhanced interactions that feel polished and fast.
+
+## 📁 Key Files and Structure
+
+```
+src/
+├── components/
+│   ├── layout/
+│   │   ├── About/
+│   │   └── Home/
+│   ├── ui/
+│   └── ProductCard.tsx
+├── context/
+│   └── CartContext.tsx
+├── pages/
+│   ├── About.tsx
+│   ├── Cart.tsx
+│   ├── Checkout.tsx
+│   ├── Home.tsx
+│   ├── ProductDetails.tsx
+│   └── Shop.tsx
+├── App.tsx
+└── data.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧩 Installed Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `react` / `react-dom` — UI library
+- `react-router-dom` — declarative routing
+- `framer-motion` — interaction and animation
+- `tailwindcss` — utility-first styling
+- `swiper` — carousel presentations
+- `vite` — development tooling and build system
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js v16+
+- npm or yarn
+
+### Install
+
+```bash
+npm install
 ```
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## 🛠️ Deployment
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Client-side routing support via `public/_redirects`
+
+> Ensure your hosting environment is configured to redirect all traffic to `index.html` when using React Router.
+
+## 📌 Recommended Workflow
+
+1. Run `npm install`
+2. Start local development with `npm run dev`
+3. Create routes and pages within `src/pages`
+4. Add shared UI patterns to `src/components/ui`
+5. Keep cart logic centralized in `src/context/CartContext.tsx`
+6. Persist product/category data in `src/data.ts`
+
+## 🧠 Design Principles
+
+- Maintainable page orchestration
+- Reusable atomic UI components
+- Clean separation of layout and data logic
+- Consistent theming and motion-driven polish
+- Strong typing and normalized state
+
+## 🙋 Author
+
+**Shams Sarar** — Full-Stack Software Engineer
+
+- GitHub: [@ShamsSarar](https://github.com/ShamsSarar)
+
+---
+
+Built as a high-performance frontend architecture assessment for premium e-commerce experiences.
