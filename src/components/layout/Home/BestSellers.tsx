@@ -2,12 +2,24 @@ import { motion } from "framer-motion";
 import { products } from "../../../data";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../context/CartContext";
+import type { Product } from "../../../context/CartContext";
 
 export default function BestSellers() {
   const { addToCart } = useCart();
 
-  // Grab 3 products to act as our "Top 3" best sellers
-  const topSellers = products.slice(1, 4);
+  // Dynamic Logic: Grab exactly ONE product from each category, up to 3 total
+  const topSellers: Product[] = [];
+  const seenCategories = new Set<string>();
+
+  for (const product of products) {
+    if (!seenCategories.has(product.category)) {
+      seenCategories.add(product.category);
+      topSellers.push(product);
+
+      // Stop once we have 3 items to fit the grid perfectly
+      if (topSellers.length === 3) break;
+    }
+  }
 
   return (
     <section className="py-24 bg-slate-900 border-t border-slate-800">
@@ -56,6 +68,10 @@ export default function BestSellers() {
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
+                {/* Dynamically displaying the category above the name to highlight the variety */}
+                <span className="text-amber-500 text-xs uppercase font-bold tracking-wider mb-1 block">
+                  {item.category}
+                </span>
                 <h3 className="text-xl font-bold text-white mb-2">
                   {item.name}
                 </h3>
@@ -69,7 +85,10 @@ export default function BestSellers() {
                   ${item.price.toFixed(2)}
                 </span>
                 <button
-                  onClick={() => addToCart(item)}
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevents the Link wrapping the card from triggering if overlapping occurs
+                    addToCart(item);
+                  }}
                   className="bg-slate-700 hover:bg-amber-600 text-white p-3 rounded-md transition-colors"
                   aria-label="Add to cart"
                 >
