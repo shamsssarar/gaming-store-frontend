@@ -2,6 +2,8 @@
 
 A premium, high-performance storefront for next-level gaming hardware. Built with a component-driven React architecture, global cart state management, and a polished Tailwind + Framer Motion experience.
 
+[Live Demo](https://sdstore.netlify.app) • https://sdstore.netlify.app
+
 ## 🚀 Project Overview
 
 `gaming-store` is a modern React-based storefront designed for elite gaming peripherals and hardware. It emphasizes maintainability, performance, and a premium UX through:
@@ -71,6 +73,10 @@ src/
 - `tailwindcss` — utility-first styling
 - `swiper` — carousel presentations
 - `vite` — development tooling and build system
+
+## 🛠️ Technology Stack
+
+`React` `TypeScript` `Vite` `Tailwind CSS` `Framer Motion` `React Router` `Context API` `LocalStorage` `Responsive Design` `Glassmorphism`
 
 ## ⚙️ Getting Started
 
