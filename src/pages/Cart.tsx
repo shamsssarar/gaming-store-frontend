@@ -16,7 +16,7 @@ export default function Cart() {
           Looks like you haven't added any gear yet.
         </p>
         <Link
-          to="/"
+          to="/shop"
           className="bg-amber-600 text-white px-8 py-3 rounded-md font-medium hover:bg-amber-700 transition-colors"
         >
           Continue Shopping
