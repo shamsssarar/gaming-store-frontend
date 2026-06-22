@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "../../context/CartContext";
 import type { Product } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -47,28 +49,45 @@ export default function ProductCard({ product }: { product: Product }) {
           </span>
 
           <motion.button
-            whileTap={{ scale: 0.9 }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            whileTap={{ scale: 0.95 }}
             onClick={(e) => {
               e.preventDefault();
               addToCart(product);
             }}
-            className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg shadow-slate-900/20"
+            className="relative flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-amber-600 transition-colors shadow-lg shadow-slate-900/20 overflow-hidden"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            Add
+            {/* 1. The Icon (Conditional: Only shows when hovered) */}
+            <AnimatePresence>
+              {isHovered && (
+                <motion.div
+                  initial={{ width: 0, opacity: 0, x: -10 }}
+                  animate={{ width: "auto", opacity: 1, x: 0 }}
+                  exit={{ width: 0, opacity: 0, x: -10 }}
+                  className="flex items-center"
+                >
+                  {/* You can swap this SVG for any icon (mouse, keyboard, etc.) */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mr-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 2C9.239 2 7 4.239 7 7v10c0 2.761 2.239 5 5 5s5-2.239 5-5V7c0-2.761-2.239-5-5-5z M12 6c.552 0 1 .448 1 1v4c0 .552-.448 1-1 1s-1-.448-1-1V7c0-.552.448-1 1-1z"
+                    />
+                  </svg>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* 2. The Text */}
+            <motion.span layout>Add</motion.span>
           </motion.button>
         </div>
       </div>
