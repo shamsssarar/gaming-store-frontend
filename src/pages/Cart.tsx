@@ -144,12 +144,14 @@ export default function Cart() {
               </div>
             </div>
 
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-slate-900 text-white py-4 rounded-md font-bold hover:bg-slate-800 transition-colors shadow-md"
-            >
-              Proceed to Checkout
-            </motion.button>
+            <Link to="/checkout" className="block w-full">
+              <motion.button
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-slate-900 text-white py-4 rounded-md font-bold hover:bg-slate-800 transition-colors shadow-md"
+              >
+                Proceed to Checkout
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>
