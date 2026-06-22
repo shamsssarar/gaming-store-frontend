@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function HeroBanner() {
   return (
-    <section className="relative h-[80vh] bg-slate-900 flex items-center overflow-hidden">
+    <section className="relative h-[100vh] bg-slate-900 flex items-center overflow-hidden pt-24 pb-20">
       {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
